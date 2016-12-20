@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata>
+Created by FontForge 20161005 at Sun Dec 18 09:11:38 2016
+ By root
+</metadata>
+<defs>
+<font id="icons" horiz-adv-x="0" >
+  <font-face 
+    font-family="icons"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="1024"
+    panose-1="0 0 0 0 0 0 0 0 0 0"
+    ascent="960"
+    descent="-64"
+    bbox="0 0 1024 896"
+    underline-thickness="0"
+    underline-position="0"
+    unicode-range="U+0020-FFFD"
+  />
+<missing-glyph 
+ />
+    <glyph glyph-name=".notdef" unicode="&#xfffd;" 
+ />
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="512" 
+d="M0 0v0v0v0z" />
+    <glyph glyph-name="uniE600" unicode="&#xe600;" horiz-adv-x="1024" 
+d="M512 896q-53 0 -103 -10.5t-96 -30t-87 -47t-76 -62.5l-150 150v-384h384l-144 144q27 26 57.5 46.5t65 35t72 22.5t77.5 8q80 0 149.5 -30t122 -82.5t82.5 -122t30 -149.5q0 -43 -9 -83.5t-26 -77t-41 -69t-54 -58.5l85 -96q40 35 72 78t54.5 92t34.5 103t12 111
+q0 106 -40 199.5t-109.5 163t-163 109.5t-199.5 40v0z" />
+  </font>
+</defs></svg>

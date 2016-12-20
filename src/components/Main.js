@@ -26,7 +26,7 @@ function getRangeRandom(low, high) {
 * 获取旋转角度的范围
 */
 function getDegRandom(){
-  let baseDeg = 30; 
+  let baseDeg = 30;
   return (Math.random()>0.5?'':'-')+Math.ceil(Math.random()*baseDeg);
 }
 
@@ -54,8 +54,8 @@ class ImgFigure extends React.Component {
     
     //如果图片旋转角度有值，且不是0
     if(this.props.arrange.rotate){
-      ['-moz-','-ms-','-webkit-',''].forEach(function(value){
-        styleObj[value+'transform'] = 'rotate('+this.props.arrange.rotate+'deg)';
+      ['MozTransform','msTransform','WebkitTransform','transform'].forEach(function(value){
+        styleObj[value] = 'rotate('+this.props.arrange.rotate+'deg)';
       }.bind(this));
     }
     
@@ -68,12 +68,15 @@ class ImgFigure extends React.Component {
     
     var igmFigureClassName = 'img-figure';
     igmFigureClassName += this.props.arrange.isInverse?' is-inverse':'';
-
+    
     return ( < figure className = {igmFigureClassName}
       style = {
         styleObj
-      } 
+      }
       ref ="figure"
+      onClick={
+        this.handleClick.bind(this)
+      }
       >
       < img className='img-back' src = {
         this.props.data.imageURL
@@ -81,13 +84,11 @@ class ImgFigure extends React.Component {
       alt = {
         this.props.data.title
       }
-      onClick={
-        this.handleClick.bind(this)      
-      }
-      /> < figcaption > 
-        < h2 className = "img-title" > 
-          {this.props.data.title} 
-        < /h2> 
+      
+      /> < figcaption >
+        < h2 className = "img-title" >
+          {this.props.data.title}
+        < /h2>
         <div className = 'img-back' onClick={this.handleClick.bind(this)} >
           <p>
             {this.props.data.desc}
@@ -139,7 +140,7 @@ class AppComponent extends React.Component {
               left: 0,
               right: 0
             },
-            rotate: 0, 
+            rotate: 0,
             isInverse: false //图片正反面
           },
           isCenter:false //图片默认不居中
@@ -175,7 +176,7 @@ class AppComponent extends React.Component {
         halfStageW = Math.ceil(stageW / 2),
         halfStageH = Math.ceil(stageH / 2);
       //得到imgFigure的大小
-      var imgFigureDom = this.refs.imgFigure0.refs.figure, 
+      var imgFigureDom = this.refs.imgFigure0.refs.figure,
         imgW = imgFigureDom.scrollWidth,
         imgH = imgFigureDom.scrollHeight,
         halfImgW = Math.ceil(imgW / 2),
@@ -258,10 +259,10 @@ class AppComponent extends React.Component {
     //取出要布局上侧图片的状态信息
     topImgSpliceIndex = Math.ceil(Math.random() * (imgArrangeArr.length - topImgNum));
     imgsArrangeTopArr = imgArrangeArr.splice(topImgSpliceIndex, topImgNum);
-    debugger;
+
     //布局上侧图片
     imgsArrangeTopArr.forEach(function (value, index) {
-      imgsArrangeTopArr[index] = { 
+      imgsArrangeTopArr[index] = {
         pos :{
           top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
           left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
@@ -296,7 +297,6 @@ class AppComponent extends React.Component {
       imgArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
     }
     imgArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
-    console.log(imgsArrangeCenterArr[0]);
     this.setState({
       imgArrangeArr: imgArrangeArr
     });
@@ -324,7 +324,7 @@ class AppComponent extends React.Component {
             'imgFigure' + index
           }
           key = {
-            'imgFigure' + index
+             index
           }
           arrange = {
             this.state.imgArrangeArr[index]

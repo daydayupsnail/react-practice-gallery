@@ -1,3 +1,5 @@
+imgWidth = 260px;  /*根据自己的图片大小计算*/
+
 @font-face {
   font-family: "icons-turn-arrow";
   src: url("../fonts/icons/turn-arrow.eot") format("embedded-opentype"), url("../fonts/icons/turn-arrow.woff") format("woff"), url("../fonts/icons/turn-arrow.ttf") format("truetype"), url("../fonts/icons/turn-arrow.svg") format("svg");
@@ -24,7 +26,7 @@ body {
 .stage {
   position: relative;
   width: 100%;
-  height: 680px
+  height: 100%;
 }
 
 
@@ -39,23 +41,24 @@ body {
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
-  pespective: 1800px;  /*景深值。值越大，其他改变发生时，效果越小。！！属性无效*/
+  perspective: 1800px; /*景深值。值越大，其他改变发生时，效果越小。！！属性无效*/
 }
 
 .img-figure {
   position: absolute;
-  width: 260px;
+  width: imgWidth;
   height: 300px;
   margin: 0;
   padding: 30px;
   background-color: #fff;
   box-sizing: border-box;
-  transform-style: preserve-3d;
   cursor: pointer;
+  
+  transform-origin: 0 50% 0; /*旋转中心是左线*/
+  transform-style: preserve-3d;
   transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
-  transform-origin: 0 50% 0;  /*默认变形原点位于中心，即 50%。 分别为 x ,y, z */
   &.is-inverse {
-    transform: translate(260px) rotateY(180deg);  /* translate 是2d 平移，图片宽度 */
+    transform: translate(imgWidth) rotateY(180deg);
   }
   figcaption {
     text-align: center;
@@ -84,6 +87,8 @@ body {
       /*先开始时.img-back，旋转了180度，因为translateZ(1px)，位于正面图像的下方*/
       /*当.img-figure旋转时，.img-back又旋转了180度，旋转度数为360,因为translateZ(1px)，位于正面图像的上方*/
       transform: rotateY(180deg) translateZ(1px);
+      /*translateZ(1px) 是为了解决Safari 的bug 在http://www.imooc.com/video/11743 13 分 有解释*/
+      backface-visibility:hidden;
     }
   }
 }
@@ -100,6 +105,7 @@ body {
   bottom: 30px;
   z-index: 101;  /*10的2次方*/
   text-align: center;
+  width:100%;
 }
 .controller-unit{
   display: inline-block;
