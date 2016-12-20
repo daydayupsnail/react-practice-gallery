@@ -5,5 +5,5 @@
 https://daydayupsnail.github.io/react-practice-gallery/
 ### 使用es6 和 stylus
 原课程地址 http://www.imooc.com/learn/507 
-笔记 https://daydayupsnail.github.io/react/react/react-gallery
+笔记 https://daydayupsnail.github.io/react/react-gallery
 介绍了，项目开发遇到的种种问题
